@@ -9,7 +9,8 @@ function Page() {
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        <h1>YOLOv5</h1>
+        <h1>DeepRoad AI</h1>
+	<h3>Upload your image or video data here</h3>
         <Viewer />
       </div>
     </ThemeProvider>
