@@ -70,7 +70,7 @@ export default function Viewer() {
         videoConstraints={videoConstraints}
       />
       <p>
-        <button onClick={capture}>Upload your image</button>
+        <button onClick={capture}>Capture photo</button>
       </p>
       {capturedImg && (
         <img alt="Captured image" src={capturedImg} width="50%" />
