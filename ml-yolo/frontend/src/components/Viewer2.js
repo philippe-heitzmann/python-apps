@@ -8,10 +8,32 @@ const Wrapper = styled.div`
   margin: 0 auto;
 `;
 
-export default function Viewer() {
+export default function Viewer2() {
+  const initialstate = {
+        videoSrc:""
+    }
+
   const webcamRef = useRef(null);
   const [capturedImg, setCapturedImg] = useState(null);
   const [prediction, setPrediction] = useState("");
+  const [videoSrc , seVideoSrc] = useState("");
+  const hiddenFileInput = React.useRef(null);
+
+  const handleClick = event => {
+    hiddenFileInput.current.click();
+  };
+
+  const handleChange = event => {
+    const fileUploaded = event.target.files[0];
+    props.handleFile(fileUploaded);
+  };
+
+  //  const handleChange = ({file}) => {
+  //     var reader = new FileReader();
+  //     console.log(file)
+  //     var url = URL.createObjectURL(file.originFileObj);
+  //     seVideoSrc(url);
+  // };
 
   const [isPaused, setPause] = useState(false);
   const ws = useRef(null);
@@ -61,45 +83,20 @@ export default function Viewer() {
   }, [webcamRef]);
 
   return (
-    <Wrapper>
-      <Webcam
-        audio={false}
-        ref={webcamRef}
-        screenshotFormat="image/jpeg"
-        width="50%"
-        videoConstraints={videoConstraints}
-      />
-      <p>
-        <button onClick={capture}>Capture photo</button>
-      </p>
-      {capturedImg && (
-        <img alt="Captured image" src={capturedImg} width="50%" />
-      )}
-
-      <h3>{prediction && prediction}</h3>
-    </Wrapper>
+  <>
+    <button onClick={handleClick}>
+      Upload a file
+    </button>
+    <input 
+      type="file"
+      ref={hiddenFileInput}
+      onChange={handleChange}
+      style={{display: 'none'}}
+    />
+  </>
   );
 }
 
 
 
-// class Viewer extends React.Component {
-//   state = {
-//     files: []
-//   }
-
-//   fileSelectedHandler = (e) => {
-//     this.setState({ files: [...this.state.files, ...e.target.files] })
-//   }
-
-//   render() {
-//     return (
-//       <form>
-//         <div><h2>Upload images</h2></div>
-//         <h3>Images</h3>
-//         <input type="file" multiple onChange={this.fileSelectedHandler} />
-//       </form>
-//     )
-//   }
-// }
 
