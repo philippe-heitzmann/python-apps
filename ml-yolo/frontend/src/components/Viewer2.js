@@ -23,10 +23,10 @@ export default function Viewer2() {
     hiddenFileInput.current.click();
   };
 
-  const handleChange = event => {
-    const fileUploaded = event.target.files[0];
-    props.handleFile(fileUploaded);
-  };
+  // const handleChange = event => {
+  //   const fileUploaded = event.target.files[0];
+  //   props.handleFile(fileUploaded);
+  // };
 
   //  const handleChange = ({file}) => {
   //     var reader = new FileReader();
